@@ -1,5 +1,7 @@
+// src/utilities/storage.js
+
 // Obtener datos desde localStorage
-export const getFromStorage = (key) => {
+export const getStorage = (key) => {
   try {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : [];
@@ -10,7 +12,7 @@ export const getFromStorage = (key) => {
 };
 
 // Guardar datos en localStorage
-export const setStorage = (key, value) => {
+export const saveToStorage = (key, value) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
     return true;
@@ -22,7 +24,7 @@ export const setStorage = (key, value) => {
 
 // Actualizar inventario local en base a nombre y cambio de cantidad
 export const updateInventory = (itemName, quantityChange) => {
-  const inventory = getFromStorage('inventory');
+  const inventory = getStorage('inventory');
   const itemIndex = inventory.findIndex(item => item.name === itemName);
   
   if (itemIndex >= 0) {
@@ -31,9 +33,9 @@ export const updateInventory = (itemName, quantityChange) => {
       ...updatedInventory[itemIndex],
       quantity: updatedInventory[itemIndex].quantity + quantityChange
     };
-    setStorage('inventory', updatedInventory);
+    saveToStorage('inventory', updatedInventory);
   } else {
-    setStorage('inventory', [
+    saveToStorage('inventory', [
       ...inventory,
       {
         name: itemName,
@@ -45,6 +47,3 @@ export const updateInventory = (itemName, quantityChange) => {
     ]);
   }
 };
-
-// Alias para compatibilidad
-export const saveToStorage = setStorage;
