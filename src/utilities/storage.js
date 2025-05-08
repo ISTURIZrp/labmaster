@@ -46,4 +46,4 @@ export const updateInventory = (itemName, quantityChange) => {
       }
     ]);
   }
-};
+}; 
