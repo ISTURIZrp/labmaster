@@ -1,5 +1,3 @@
-// src/utilities/storage.js
-
 // Obtener datos desde localStorage
 export const getFromStorage = (key) => {
   try {
@@ -46,4 +44,7 @@ export const updateInventory = (itemName, quantityChange) => {
       }
     ]);
   }
-}; 
+};
+
+// Alias para compatibilidad
+export const saveToStorage = setStorage;
