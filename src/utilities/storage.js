@@ -1,5 +1,7 @@
-// Exportamos las funciones individualmente
-export const getStorage = (key) => {
+// src/utilities/storage.js
+
+// Obtener datos desde localStorage
+export const getFromStorage = (key) => {
   try {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : [];
@@ -9,6 +11,7 @@ export const getStorage = (key) => {
   }
 };
 
+// Guardar datos en localStorage
 export const setStorage = (key, value) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
@@ -19,8 +22,9 @@ export const setStorage = (key, value) => {
   }
 };
 
+// Actualizar inventario local en base a nombre y cambio de cantidad
 export const updateInventory = (itemName, quantityChange) => {
-  const inventory = getStorage('inventory');
+  const inventory = getFromStorage('inventory');
   const itemIndex = inventory.findIndex(item => item.name === itemName);
   
   if (itemIndex >= 0) {
