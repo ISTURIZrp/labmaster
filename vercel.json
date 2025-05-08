@@ -1,5 +1,5 @@
 {
+  "framework": "create-react-app",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite"
+  "outputDirectory": "build"
 }
